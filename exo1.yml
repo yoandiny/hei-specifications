@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Exemple d'API
+  description: Documentation d'API Exo1
+  version: 1.0.0
+servers:
+  - url: http://localhost
+
+paths:
+  /ping:
+    get:
+      description: Retourne pong
+      responses:
+        '200':
+          description: Réponse
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+
