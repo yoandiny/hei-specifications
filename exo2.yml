@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: Exemple d'API
+  description: Documentation d'API Exo2
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /users:
+    get:
+      summary: Recherche d'utilisateurs par pages
+      description: Retourne une liste d'utilisateur au format JSON
+      parameters:
+        - name: page
+          in: query
+          description: Numéro de la page à retourner
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: size
+          in: query
+          description: Nombre d'utilisateurs par page
+          required: false
+          schema:
+            type: integer
+            default: 20
+
+      responses:
+        '200':
+          description: Liste des utilisateurs retrouvés
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Alice
+                    email:
+                      type: string
+                      format: email
+                      example: alice@example.com
+                example: [{ "id": 1, "name": "Alice", "email": "alice@example.com" }]
+        '400':
+          description: Mauvais type de paramètres fournis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid page or size parameters"
+                example: { "error": "Bad types for provided query parameters" }
+

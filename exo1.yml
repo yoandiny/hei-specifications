@@ -4,7 +4,7 @@ info:
   description: Documentation d'API Exo1
   version: 1.0.0
 servers:
-  - url: http://localhost
+  - url: http://localhost:8080
 
 paths:
   /ping:
